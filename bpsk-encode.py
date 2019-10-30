@@ -55,14 +55,15 @@ class BPSK:
         fig.suptitle('Proceso de transmision', fontsize=16)
         plt.show()
 
-#---------------------------------------------------------------------------------------------#
 
+#---------------------------------------------------------------------------------------------#
 nBits   = 10                                 #number of bits of the source
 randSrc = randPolarNRZSource(nBits)          #get a random list or NRZ values
 amp     = 0.8                                #amplitude of carrier
 cycles  = 3                                  #cycles per bit
 n       = cycles*20                          #number of samples per bit
 
+#--------------------------------MAIN Program-------------------------------------------------#
 BPSK = BPSK(randSrc, amp, cycles, n)
 BPSK.encode()
 print BPSK.getNRZSource()
