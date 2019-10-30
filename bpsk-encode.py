@@ -58,21 +58,18 @@ class BPSK:
 #---------------------------------------------------------------------------------------------#
 
 nBits   = 10                                 #number of bits of the source
+randSrc = randPolarNRZSource(nBits)          #get a random list or NRZ values
 amp     = 0.8                                #amplitude of carrier
 cycles  = 3                                  #cycles per bit
 n       = cycles*20                          #number of samples per bit
-randSrc = randPolarNRZSource(nBits)          #get a random list or NRZ values
 
 BPSK = BPSK(randSrc, amp, cycles, n)
 BPSK.encode()
+print BPSK.getNRZSource()
 BPSK.plotEncoding()
-
 #print BPSK.getOutput()
-#print BPSK.getNRZSource()
 #print BPSK.getExpandedSource()
 #print BPSK.getCarrier() 
-
-
 
 
 
