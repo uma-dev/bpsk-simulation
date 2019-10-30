@@ -7,15 +7,19 @@ import matplotlib.pyplot as plt
 def polarNRZSource( numberOfBits ):
     return [ 2*randint(0,1)-1 for i in range(numberOfBits) ]
 
-def expandBits( NRZList, factor ):
-    return [ item for item in NRZList for i in range(factor) ]
-    
-def sinGenerator( A, fc, n ):
-    return [ A*round(sin(2*pi*fc*round(i,4)), 5) for i in numpy.arange(0 , 1 , 1.0/n) ]
+class BPSK:
+    def __init__(self, listNRZ):
+        self.listNRZ = listNRZ
 
-def multiply(seq, carrier):
-    c = (len(seq)/(len(carrier) )  *carrier )             #Multiple carriers in all sequence
-    return [ c[i]*seq[i] for i in range(len(seq)) ]
+    def expandBits(self , factor):
+        return [ item for item in self.listNRZ for i in range(factor) ]
+    
+    def sinGenerator( A, fc, n ):
+        return [ A*round(sin(2*pi*fc*round(i,4)), 5) for i in numpy.arange(0 , 1 , 1.0/n) ]
+
+    def multiply(seq, carrier):
+        c = (len(seq)/(len(carrier) )  *carrier )             #Multiple carriers in all sequence
+        return [ c[i]*seq[i] for i in range(len(seq)) ]
 #---------------------------------------------------------------------------------------------#
 
 nBits  = 10             #number of bits of the source
